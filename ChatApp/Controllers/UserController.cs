@@ -31,8 +31,8 @@ namespace ChatApp.Controllers
             return book;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Post(User newBook)
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register(User newBook)
         {
             try
             {
@@ -44,6 +44,21 @@ namespace ChatApp.Controllers
                 return BadRequest(ex.Message);
             }
      
+        }
+
+        [HttpPost("Login")]
+        public async  Task<IActionResult> Login(UserLogin User1)
+        {
+            try
+            {
+                Console.WriteLine(User1.Username+" "+User1.Password);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         [HttpPut("{id:length(24)}")]
