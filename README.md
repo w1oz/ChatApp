@@ -1,2 +1,2 @@
 # ChatApp
-Code theo gợi ý của giáo sư Nguyễn Tất Hưng lương trăm củ 1 tuần
+Code theo gợi ý của người bạn để có kinh nghiệm code .NET
