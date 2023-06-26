@@ -20,5 +20,8 @@ namespace ChatApp.Model
 
         [BsonElement]
         public string Password { get; set; }
+
+        [BsonElement]
+        public string RefreshToken { get; set; }
     }
 }

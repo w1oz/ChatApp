@@ -22,12 +22,19 @@ namespace ChatApp.Services
 
         public async Task<User?> GetAsync(string id) =>
             await _UserColleciton.Find(x => x.Id == id).FirstOrDefaultAsync();
-
+        public async Task<User?> GetAccountAsync(string username) =>
+            await _UserColleciton.Find(x => x.UserName == username).FirstOrDefaultAsync();
         public async Task CreateAsync(User newUser) =>
             await _UserColleciton.InsertOneAsync(newUser);
 
         public async Task UpdateAsync(string id, User updatedUser) =>
             await _UserColleciton.ReplaceOneAsync(x => x.Id == id, updatedUser);
+        public async Task UpdateToken(string id, string ref_token)
+        {
+            var user = await _UserColleciton.Find(x => x.Id == id).FirstOrDefaultAsync();
+            user.RefreshToken = ref_token;
+            await _UserColleciton.ReplaceOneAsync(x => x.Id == id, user);
+        }
 
         public async Task RemoveAsync(string id) =>
             await _UserColleciton.DeleteOneAsync(x => x.Id == id);
